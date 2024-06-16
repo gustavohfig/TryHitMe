@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3 uid="uid://er7ekipu02fx"]
+
+[ext_resource type="Script" path="res://Menus/MainMenu/GameModes/modes.gd" id="1_2l3js"]
+[ext_resource type="FontFile" uid="uid://crtlhn86rvuuh" path="res://Kurland.otf" id="2_1cnxv"]
+[ext_resource type="Texture2D" uid="uid://c6q20ga25ngvv" path="res://Images/Try Hit Me_label2.png" id="3_g8w6o"]
+[ext_resource type="AudioStream" uid="uid://b0g6l5rnw5154" path="res://Sounds/ClickHover.mp3" id="4_tt6y8"]
+
+[sub_resource type="Animation" id="Animation_nntwx"]
+resource_name = "Title"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TryHitMeLabel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.205),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(571, 209), Vector2(571, 175)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c48d"]
+_data = {
+"Title": SubResource("Animation_nntwx")
+}
+
+[node name="Modes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2l3js")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.616
+anchor_right = 0.5
+anchor_bottom = 0.616
+offset_left = -86.0
+offset_top = -68.168
+offset_right = 83.0
+offset_bottom = 67.832
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Arena" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.443137)
+theme_override_fonts/font = ExtResource("2_1cnxv")
+theme_override_font_sizes/font_size = 50
+text = "Arena"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TryHitMeLabel2" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(571, 209)
+scale = Vector2(1.254, 1.226)
+texture = ExtResource("3_g8w6o")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -65.0
+offset_right = 84.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1cnxv")
+theme_override_font_sizes/font_size = 25
+text = "Back"
+flat = true
+
+[node name="TitleAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2c48d")
+}
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tt6y8")
+
+[node name="High_Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.465
+anchor_right = 0.878
+anchor_bottom = 0.573
+offset_left = -6.10352e-05
+offset_top = -0.320007
+offset_right = -0.456055
+offset_bottom = -0.304016
+theme_override_fonts/font = ExtResource("2_1cnxv")
+theme_override_font_sizes/font_size = 25
+text = "High Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="High_Score_number" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.812
+anchor_top = 0.596
+anchor_right = 0.812
+anchor_bottom = 0.596
+offset_left = -57.4241
+offset_top = -27.208
+offset_right = 58.5759
+offset_bottom = 27.792
+theme_override_fonts/font = ExtResource("2_1cnxv")
+theme_override_font_sizes/font_size = 45
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="VBoxContainer/Arena" to="." method="_on_arena_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Arena" to="." method="_on_arena_pressed"]
+[connection signal="mouse_entered" from="Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

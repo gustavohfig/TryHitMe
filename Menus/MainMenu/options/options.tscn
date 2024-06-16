@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67ps2gakcgrx"]
+
+[ext_resource type="Script" path="res://Menus/MainMenu/options/options.gd" id="1_6qc4b"]
+[ext_resource type="FontFile" uid="uid://crtlhn86rvuuh" path="res://Kurland.otf" id="2_5nj8o"]
+[ext_resource type="PackedScene" uid="uid://bejtpwrpmyuuj" path="res://Menus/MainMenu/options/settings_tab_container.tscn" id="2_wq3ih"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6qc4b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Settings_tab_container" parent="." instance=ExtResource("2_wq3ih")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176
+anchor_right = 0.176
+offset_left = -174.752
+offset_top = 18.0
+offset_right = 57.248
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_5nj8o")
+theme_override_font_sizes/font_size = 66
+text = "Options"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.5
+offset_top = -62.0
+offset_right = 84.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5nj8o")
+theme_override_font_sizes/font_size = 25
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
